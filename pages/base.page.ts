@@ -1,6 +1,3 @@
-// TODO: write a base page class for all pages to extend
-// TODO: then refracttor all pages to extend this base page class
-
 import { Page } from '@playwright/test';
 
 export class BasePage {
