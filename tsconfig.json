@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+        "@data/*": ["./data/*"],
+        "@pages/*": ["./pages/*"],
+        "@utils/*": ["./utils/*"],
+        "@fixtures/*": ["./fixtures/*"],
+        "@models/*": ["./models/*"],
+        "@tests/*": ["./tests/*"],
+        "@common-components/*": ["./pages/common-components/*"],
+    }
+  },
+}

@@ -1,0 +1,13 @@
+{
+    "accounts": {
+        "normalUser": {
+            "username": "huyphu111@gmail.com",
+            "email": "huyphu111@gmail.com",
+            "password": "RealestPa$word69"
+        },
+        "invalidUser": {
+            "username": "user",
+            "password": "password"
+        }
+    }
+}

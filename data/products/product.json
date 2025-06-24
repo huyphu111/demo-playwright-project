@@ -1,0 +1,45 @@
+[
+  {
+    "name": "MacBook Pro",
+    "description": "Apple's flagship laptop with M3 chip.",
+    "price": 2000.00,
+    "imageUrl": "https://example.com/images/macbookpro.jpg",
+    "createdAt": "2024-06-01T10:00:00Z",
+    "updatedAt": "2024-06-10T12:00:00Z",
+    "category": "Laptops",
+    "availability": true,
+    "productCode": "Product 18",
+    "brand": "Apple",
+    "viewCount": 20239,
+    "tags": ["Apple", "MacBook"]
+  },
+  {
+    "id": 87,
+    "name": "iPod Touch",
+    "description": "Ergonomic wireless mouse with USB receiver.",
+    "price": 194.00,
+    "imageUrl": null,
+    "createdAt": "2024-05-15T09:30:00Z",
+    "updatedAt": null,
+    "category": "Accessories",
+    "availability": true,
+    "productCode": "Product 5",
+    "brand": "Apple",
+    "viewCount": 20447,
+    "tags": []
+  },
+  {
+    "name": "Gaming Monitor",
+    "description": null,
+    "price": 399.99,
+    "imageUrl": "https://example.com/images/gamingmonitor.jpg",
+    "createdAt": null,
+    "updatedAt": null,
+    "category": "Monitors",
+    "availability": true,
+    "productCode": null,
+    "brand": "ASUS",
+    "viewCount": 0,
+    "tags": []
+  }
+]
