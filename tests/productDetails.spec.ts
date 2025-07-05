@@ -17,7 +17,7 @@ test.beforeAll(async () => {
 test.describe('Product Details Page Tests', () => {
     test('Verify that user can view product details successfully (In stock product)', async ({ homePage, productDetailsPage }) => {
         // Navigate to the product search result page
-        await homePage.navigateToProductDetails(product.id.toString());
+        await homePage.navigateToProductDetailsViaURL(product.id.toString());
 
         // Wait for the product details to load
         await productDetailsPage.waitForProductTiles(product.name);
@@ -33,7 +33,7 @@ test.describe('Product Details Page Tests', () => {
 
     test('Verify that user can view product details successfully (Out of stock product)', async ({ homePage, productDetailsPage }) => {
         // Navigate to the product search result page
-        await homePage.navigateToProductDetails(outOfStockProduct.id.toString());
+        await homePage.navigateToProductDetailsViaURL(outOfStockProduct.id.toString());
 
         // Wait for the product details to load
         await productDetailsPage.waitForProductTiles(outOfStockProduct.name);

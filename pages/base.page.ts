@@ -7,7 +7,7 @@ export class BasePage {
         this.page = page;
     }
 
-    async navigateToProductDetails(productId: string) {
+    async navigateToProductDetailsViaURL(productId: string) {
         await this.page.goto(`/index.php?route=product/product&product_id=${productId}`);
     }
 }

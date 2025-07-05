@@ -8,6 +8,7 @@ export class ProductSearchResultPage extends BasePage {
     readonly categoryList: Locator;
     readonly productList: Locator;
     readonly productSearchBody: Locator;
+    readonly mustLoginNotificationMessage: Locator;
 
     constructor(page: Page) {
         super(page);
@@ -17,6 +18,7 @@ export class ProductSearchResultPage extends BasePage {
         this.categoryList = this.page.locator('#input-category');
         this.productList = this.page.locator('div[class="product-thumb"]');
         this.productSearchBody = this.page.locator('#product-search');
+        this.mustLoginNotificationMessage = this.page.getByText('You must login or create an account');
     }
 
     async waitForFilterSidebar() {
@@ -34,5 +36,15 @@ export class ProductSearchResultPage extends BasePage {
             return await nameElement.textContent();
         }));
         return productNames.filter(name => name !== null) as string[];
+    }
+
+    async addProductToFavorites(productId: string) {
+        await this.page.locator(`//a[contains(@id, "mz-product-grid-image-${productId}")]`).hover();
+        await this.page.waitForTimeout(1000);
+        await this.page.locator(`//div[@class="product-action"]/button[contains(@class, "wishlist-${productId}")]`).click();
+    }
+
+    async waitForMustLoginNotification() {
+        await this.mustLoginNotificationMessage.waitFor({ state: 'visible' });
     }
 }
