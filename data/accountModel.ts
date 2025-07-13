@@ -9,13 +9,3 @@ export interface Account {
 }
 
 export type Accounts = Account[];
-
-export interface Endpoint {
-    name: string;
-    path: string;
-    method: 'GET' | 'POST' | 'PUT' | 'DELETE' ;
-    description?: string;
-    requiresAuth?: boolean;
-}
-
-export type Endpoints = Endpoint[];

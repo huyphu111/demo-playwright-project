@@ -14,6 +14,9 @@ export interface IProduct {
     tags?: string[];
 }
 
+// TODO: Refractor product data so that you can call products.outOfStockProduct.<DETAILS>
+// Similar to how accounts.qa.json is stored
+
 export class Product implements IProduct {
     id: number | null;
     name: string;
