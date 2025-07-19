@@ -1,50 +1,39 @@
 import { test } from '@fixtures/base.fixture';
 import { expect } from '@playwright/test';
-import { JsonUtils } from '@utils/JsonUtils';
-import { Product } from '@data/products/productModel';
+import { ipodTouchAvailable, ipodTouchOutOfStock } from '@data/products/productModel';
 import { getAvailabilityLabel } from 'helpers/productHelpers';
-
-let product: Product;
-let outOfStockProduct: Product;
-test.beforeAll(async () => {
-    // Load product data from JSON file
-    const productDataPath = '../data/products/product.json';
-    const productsData = await JsonUtils.readJsonFile<{ products: Product[] }>(productDataPath);
-    product = productsData[1]; // Assuming we want the first product for testing
-    outOfStockProduct = productsData[2]; // Assuming the first product is out of stock
-});
 
 test.describe('Product Details Page Tests', () => {
     test('Verify that user can view product details successfully (In stock product)', async ({ homePage, productDetailsPage }) => {
         // Navigate to the product search result page
-        await homePage.navigateToProductDetailsViaURL(product.id.toString());
+        await homePage.navigateToProductDetailsViaURL(ipodTouchAvailable.id.toString());
 
         // Wait for the product details to load
-        await productDetailsPage.waitForProductTiles(product.name);
+        await productDetailsPage.waitForProductTiles(ipodTouchAvailable.name);
 
         let productCode = await productDetailsPage.getProductCode();
         let productBrand = await productDetailsPage.getProductBrand();
         let productAvailability = await productDetailsPage.getProductAvailability();
 
-        expect(productCode).toEqual(product.productCode);
-        expect(productBrand).toEqual(product.brand);
-        expect(productAvailability).toEqual(await getAvailabilityLabel(product.availability));
+        expect(productCode).toEqual(ipodTouchAvailable.productCode);
+        expect(productBrand).toEqual(ipodTouchAvailable.brand);
+        expect(productAvailability).toEqual(await getAvailabilityLabel(ipodTouchAvailable.availability));
     });
 
     test('Verify that user can view product details successfully (Out of stock product)', async ({ homePage, productDetailsPage }) => {
         // Navigate to the product search result page
-        await homePage.navigateToProductDetailsViaURL(outOfStockProduct.id.toString());
+        await homePage.navigateToProductDetailsViaURL(ipodTouchOutOfStock.id.toString());
 
         // Wait for the product details to load
-        await productDetailsPage.waitForProductTiles(outOfStockProduct.name);
+        await productDetailsPage.waitForProductTiles(ipodTouchOutOfStock.name);
 
         let productCode = await productDetailsPage.getProductCode();
         let productBrand = await productDetailsPage.getProductBrand();
         let productAvailability = await productDetailsPage.getProductAvailability();
 
-        expect(productCode).toEqual(outOfStockProduct.productCode);
-        expect(productBrand).toEqual(outOfStockProduct.brand);
-        expect(productAvailability).toEqual(await getAvailabilityLabel(outOfStockProduct.availability));
+        expect(productCode).toEqual(ipodTouchOutOfStock.productCode);
+        expect(productBrand).toEqual(ipodTouchOutOfStock.brand);
+        expect(productAvailability).toEqual(await getAvailabilityLabel(ipodTouchOutOfStock.availability));
     });
 });
 

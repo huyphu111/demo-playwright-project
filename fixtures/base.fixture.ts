@@ -1,17 +1,10 @@
 import { test as base } from '@playwright/test';
-import { Page } from '@playwright/test'
 import { LoginPage } from '@pages/login';
 import { HomePage } from '@pages/home';
 import { MyAccountPage } from '@pages/myAccount';
 import { ProductSearchResultPage } from '@pages/productSearchResult';
 import { ProductDetailsPage } from '@pages/productDetails.page';
-import { JsonUtils } from '@utils/JsonUtils';
-import { Account } from '@data/accountModel';
-
-const accountsData = '../data/accounts.qa.json';
-const dataPromise = JsonUtils.readJsonFile<{ accounts: Record<string, Account> }>(accountsData);
-
-const accountPromise: Promise<Account> = dataPromise.then(data => data.accounts.normalUser);
+import { accounts } from '@data/accountModel';
 
 type BaseFixtures = {
     loginPage: LoginPage;
@@ -44,7 +37,7 @@ export const test = base.extend<BaseFixtures>({
         await use(productDetailsPage);
     },
     loggedInPage: async ({ loginPage, myAccountPage }, use) => {
-        const account = await accountPromise;
+        const account = accounts.normalUser;
         await loginPage.login(account.username, account.password);
         await use(myAccountPage);
     }
