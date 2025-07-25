@@ -1,5 +1,4 @@
-import { test } from '@fixtures/base.fixture';
-import { expect } from '@playwright/test';
+import { test, expect } from '@fixtures/base.fixture';
 import { ipodTouchAvailable, ipodTouchOutOfStock } from '@data/products/productModel';
 import { getAvailabilityLabel } from 'helpers/productHelpers';
 

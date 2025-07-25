@@ -1,5 +1,4 @@
-import { test } from '@fixtures/base.fixture';
-import { expect } from '@playwright/test';
+import { test, expect } from '@fixtures/base.fixture';
 import { macbookPro } from '@data/products/productModel';
 
 test('Verify that user can search product by Product Name successfully from Home Page', async ({ homePage, productSearchResultPage }) => {

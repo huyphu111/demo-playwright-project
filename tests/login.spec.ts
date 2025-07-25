@@ -1,5 +1,4 @@
-import { test } from '@fixtures/base.fixture';
-import { expect } from '@playwright/test';
+import { test, expect } from '@fixtures/base.fixture';
 import { Account, accounts } from '@data/accountModel';
 import { MESSAGES } from '@data/constants';
 

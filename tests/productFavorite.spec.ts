@@ -1,5 +1,4 @@
-import { test } from "@fixtures/base.fixture";
-import { expect } from "@playwright/test";
+import { test, expect } from "@fixtures/base.fixture";
 import { Product, ipodTouchAvailable, ipodTouchOutOfStock } from "@data/products/productModel";
 
 test.describe('Product Favorite Tests', () => {

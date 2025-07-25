@@ -42,3 +42,5 @@ export const test = base.extend<BaseFixtures>({
         await use(myAccountPage);
     }
 });
+
+export { expect } from '@playwright/test';
