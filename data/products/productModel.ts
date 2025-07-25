@@ -112,5 +112,3 @@ export const ipodTouchOutOfStock = new Product({
     viewCount: 73995,
     tags: []
 });
-
-// TODO: refractor existing code to use this TypeScript interface and class and products
