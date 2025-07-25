@@ -8,7 +8,7 @@ test.describe('Product Details Page Tests', () => {
         await homePage.navigateToProductDetailsViaURL(ipodTouchAvailable.id.toString());
 
         // Wait for the product details to load
-        await productDetailsPage.waitForProductTiles(ipodTouchAvailable.name);
+        await productDetailsPage.waitForProductTitles(ipodTouchAvailable.name);
 
         let productCode = await productDetailsPage.getProductCode();
         let productBrand = await productDetailsPage.getProductBrand();
@@ -24,7 +24,7 @@ test.describe('Product Details Page Tests', () => {
         await homePage.navigateToProductDetailsViaURL(ipodTouchOutOfStock.id.toString());
 
         // Wait for the product details to load
-        await productDetailsPage.waitForProductTiles(ipodTouchOutOfStock.name);
+        await productDetailsPage.waitForProductTitles(ipodTouchOutOfStock.name);
 
         let productCode = await productDetailsPage.getProductCode();
         let productBrand = await productDetailsPage.getProductBrand();

@@ -1,3 +1,4 @@
+import { Product, ProductCheckout } from '@data/products/productModel';
 import { BasePage } from './base.page';
 import { Page, Locator } from '@playwright/test';
 
@@ -7,6 +8,11 @@ export class ProductDetailsPage extends BasePage {
     readonly productViews: Locator;
     readonly productAvailability: Locator;
     readonly productTitle: Locator;
+    readonly addToCartButton: Locator;
+    readonly buyNowButton: Locator;
+    readonly toastMessageBody: Locator;
+    readonly cartButton: Locator;
+    readonly cartDrawer: Locator;
 
     constructor(page: Page) {
         super(page);
@@ -14,9 +20,14 @@ export class ProductDetailsPage extends BasePage {
         this.productBrand = this.page.locator('//span[contains(text(), "Brand")]/following-sibling::a');
         this.productAvailability = this.page.locator('//span[contains(text(), "Availability")]/following-sibling::span');
         this.productViews = this.page.locator('//span[contains(text(), "Viewed")]/following-sibling::span');
+        this.addToCartButton = this.page.getByRole('button', { name: "Add to Cart" });
+        this.buyNowButton = this.page.getByRole('button', { name: "Buy Now" });
+        this.toastMessageBody = this.page.locator('//*[@class="toast-body"]//p');
+        this.cartButton = this.page.locator('//*[@class="cart-icon"]').first();
+        this.cartDrawer = this.page.locator('#cart-total-drawer');
     }
 
-    async waitForProductTiles(productName: string) {
+    async waitForProductTitles(productName: string) {
         await this.page.waitForSelector(`//h1[contains(text(), "${productName}")]`, { state: 'visible' });
     }
 
@@ -36,4 +47,32 @@ export class ProductDetailsPage extends BasePage {
         return await this.productAvailability.textContent() || '';
     }
 
+    async addToCart(): Promise<void> {
+        await this.addToCartButton.click();
+    }
+
+    async getToastMessage(): Promise<string> {
+        return await this.toastMessageBody.textContent();
+    }
+
+    async openCart(): Promise<void> {
+        await this.cartButton.click();
+        await this.cartDrawer.waitFor({ state: "visible" })
+    }
+
+    // TODO: Write a function to get all products in cart
+    async getAllItemsInCart(): Promise<Array<Partial<ProductCheckout>>> {
+        let allItems: Array<Partial<ProductCheckout>> = [];
+        const items = await this.page.locator('//*[@id="cart-total-drawer"]//table[@class="table"]//tr').all();
+        for (const item of items) {
+            let itemData: Partial<ProductCheckout> = {
+                name: await item.locator('td a').nth(1).textContent(),
+                productCode: await item.locator('td small').textContent(),
+                quantity: parseInt((await item.locator('td.text-center').textContent()).toString().replace('x', ''))
+            }
+            console.log(itemData)
+            allItems.push(itemData);
+        }
+        return allItems;
+    }
 }
