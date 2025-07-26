@@ -14,6 +14,30 @@ export interface IProduct {
     tags?: string[];
 }
 
+export interface ICart {
+    products: IProductCheckout[];
+    subTotal: number;
+    ecoTax: number;
+    vat: number;
+    total: number;
+}
+
+export class Cart implements ICart {
+    products: IProductCheckout[];
+    subTotal: number;
+    ecoTax: number;
+    vat: number;
+    total: number;
+
+    constructor(data: ICart) {
+        this.products = data.products;
+        this.subTotal = data.subTotal;
+        this.ecoTax = data.ecoTax;
+        this.vat = data.vat;
+        this.total = data.total;
+    }
+}
+
 export interface IProductCheckout {
     name: string;
     productCode: string;

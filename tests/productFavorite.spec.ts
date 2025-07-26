@@ -37,11 +37,16 @@ test.describe('Product Favorite Tests', () => {
         await productDetailsPage.addToCart();
         let toastMessage = await productDetailsPage.getToastMessage();
         expect(toastMessage).toContain(MESSAGES.PRODUCT.ADD_TO_CART_SUCCESS(ipodTouchAvailable.name));
-        // TODO: handle close toast message
-
+        await productDetailsPage.closeToast();
+        
         await productDetailsPage.openCart();
         console.log(await productDetailsPage.getAllItemsInCart());
 
-        // TODO: verify product in cart
+        const cartItems = await productDetailsPage.getAllItemsInCart();
+        expect(cartItems).toStrictEqual([{
+            name: ipodTouchAvailable.name,
+            productCode: ipodTouchAvailable.productCode,
+            quantity: 1
+        }])
     });
 });

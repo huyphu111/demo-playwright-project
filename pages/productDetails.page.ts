@@ -13,6 +13,7 @@ export class ProductDetailsPage extends BasePage {
     readonly toastMessageBody: Locator;
     readonly cartButton: Locator;
     readonly cartDrawer: Locator;
+    readonly toastCloseButton: Locator;
 
     constructor(page: Page) {
         super(page);
@@ -25,6 +26,7 @@ export class ProductDetailsPage extends BasePage {
         this.toastMessageBody = this.page.locator('//*[@class="toast-body"]//p');
         this.cartButton = this.page.locator('//*[@class="cart-icon"]').first();
         this.cartDrawer = this.page.locator('#cart-total-drawer');
+        this.toastCloseButton = this.page.getByRole('button', { name: 'Close' })
     }
 
     async waitForProductTitles(productName: string) {
@@ -67,12 +69,15 @@ export class ProductDetailsPage extends BasePage {
         for (const item of items) {
             let itemData: Partial<ProductCheckout> = {
                 name: await item.locator('td a').nth(1).textContent(),
-                productCode: await item.locator('td small').textContent(),
+                productCode: (await item.locator('td small').textContent()).replace("Model: ", "").trim(),
                 quantity: parseInt((await item.locator('td.text-center').textContent()).toString().replace('x', ''))
             }
-            console.log(itemData)
             allItems.push(itemData);
         }
         return allItems;
+    }
+
+    async closeToast(): Promise<void> {
+        await this.toastCloseButton.click();
     }
 }
