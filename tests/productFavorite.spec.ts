@@ -17,28 +17,28 @@ test.describe('Product Favorite Tests', () => {
         await expect(productSearchResultPage.mustLoginNotificationMessage).toBeVisible();
     });
 
-    test("Verify that add to cart and buy now button is unavailable for out-of-stock product", async ({loggedInPage, productDetailsPage}) => {
+    test("Verify that add to cart and buy now button is unavailable for out-of-stock product", async ({ loggedInPage, productDetailsPage }) => {
         await loggedInPage.navigateToProductDetailsViaURL(ipodTouchOutOfStock.id.toString());
         await productDetailsPage.waitForProductTitles(ipodTouchOutOfStock.name);
         await expect(productDetailsPage.addToCartButton).not.toBeVisible();
         await expect(productDetailsPage.buyNowButton).not.toBeVisible();
     });
 
-    test("Verify that add to cart and buy now button is available for in-stock product", async ({loggedInPage, productDetailsPage}) => {
+    test("Verify that add to cart and buy now button is available for in-stock product", async ({ loggedInPage, productDetailsPage }) => {
         await loggedInPage.navigateToProductDetailsViaURL(ipodTouchAvailable.id.toString());
         await productDetailsPage.waitForProductTitles(ipodTouchAvailable.name);
         await expect(productDetailsPage.addToCartButton).toBeVisible();
         await expect(productDetailsPage.buyNowButton).toBeVisible();
     });
 
-    test("Verify that user can add to cart a product", async ({loggedInPage, productDetailsPage}) => {
+    test("Verify that user can add to cart a product", async ({ loggedInPage, productDetailsPage }) => {
         await loggedInPage.navigateToProductDetailsViaURL(ipodTouchAvailable.id.toString());
         await productDetailsPage.waitForProductTitles(ipodTouchAvailable.name);
         await productDetailsPage.addToCart();
         let toastMessage = await productDetailsPage.getToastMessage();
         expect(toastMessage).toContain(MESSAGES.PRODUCT.ADD_TO_CART_SUCCESS(ipodTouchAvailable.name));
         await productDetailsPage.closeToast();
-        
+
         await productDetailsPage.openCart();
         console.log(await productDetailsPage.getAllItemsInCart());
 

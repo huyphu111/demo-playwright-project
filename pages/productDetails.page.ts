@@ -62,7 +62,6 @@ export class ProductDetailsPage extends BasePage {
         await this.cartDrawer.waitFor({ state: "visible" })
     }
 
-    // TODO: Write a function to get all products in cart
     async getAllItemsInCart(): Promise<Array<Partial<ProductCheckout>>> {
         let allItems: Array<Partial<ProductCheckout>> = [];
         const items = await this.page.locator('//*[@id="cart-total-drawer"]//table[@class="table"]//tr').all();
