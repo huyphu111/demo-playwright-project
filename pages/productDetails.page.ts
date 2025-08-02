@@ -2,6 +2,8 @@ import { Product, ProductCheckout } from '@data/products/productModel';
 import { BasePage } from './base.page';
 import { Page, Locator } from '@playwright/test';
 
+export type CartItems = Array<Partial<ProductCheckout>>;
+
 export class ProductDetailsPage extends BasePage {
     readonly productCode: Locator;
     readonly productBrand: Locator;
@@ -62,8 +64,9 @@ export class ProductDetailsPage extends BasePage {
         await this.cartDrawer.waitFor({ state: "visible" })
     }
 
-    async getAllItemsInCart(): Promise<Array<Partial<ProductCheckout>>> {
-        let allItems: Array<Partial<ProductCheckout>> = [];
+    // TODO: Move Cart functions into commmon-components
+    async getAllItemsInCart(): Promise<CartItems> {
+        let allItems: CartItems = [];
         const items = await this.page.locator('//*[@id="cart-total-drawer"]//table[@class="table"]//tr').all();
         for (const item of items) {
             let itemData: Partial<ProductCheckout> = {

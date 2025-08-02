@@ -17,7 +17,7 @@ export class HomePage extends BasePage {
         this.navBar = new Navbar(this.page);
     }
 
-    async navigateToHomePage() {
+    async goto() {
         await this.page.goto('/index.php?route=common/home');
     }
 
@@ -26,8 +26,9 @@ export class HomePage extends BasePage {
         expect(title).toBe(expectedTitle);
     }
 
-    async searchForProduct(productName: string, category: string | null) {
-        await this.navBar.searchForProduct(productName, category);
+    // TODO: To remove this function as usage will call directly to navBar component
+    async searchProduct(productName: string, category: string | null) {
+        await this.navBar.searchProduct(productName, category);
     }
 }
 

@@ -15,7 +15,7 @@ export class Navbar {
         // this.categoryList = this.page.locator('#input-category');
     }
 
-    async searchForProduct(productName: string, category: string | null) {
+    async searchProduct(productName: string, category: string | null) {
         if (category) {
             await this.categorySelect.click();
             const categoryOption = this.page.getByRole('link', { name: category, exact: true })
