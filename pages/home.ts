@@ -26,7 +26,6 @@ export class HomePage extends BasePage {
         expect(title).toBe(expectedTitle);
     }
 
-    // TODO: To remove this function as usage will call directly to navBar component
     async searchProduct(productName: string, category: string | null) {
         await this.navBar.searchProduct(productName, category);
     }

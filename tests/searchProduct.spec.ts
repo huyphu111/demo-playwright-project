@@ -3,7 +3,6 @@ import { macbookPro } from '@data/products/productModel';
 
 test('Verify that user can search product by Product Name successfully from Home Page', async ({ homePage, productSearchResultPage }) => {
     await homePage.goto();
-    // TODO: Refractor homePage.searchForProduct to homePage.navbar.searchForProduct
     await homePage.searchProduct(macbookPro.name, null);
 
     await productSearchResultPage.waitForFilterSidebar();
