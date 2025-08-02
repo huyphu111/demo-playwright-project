@@ -1,6 +1,7 @@
 import { Locator, Page } from '@playwright/test';
 
 export class Navbar {
+    // TODO: Refractor so that Navbar extends from BasePage
     private readonly page: Page;
     readonly searchInput: Locator;
     readonly searchButton: Locator;

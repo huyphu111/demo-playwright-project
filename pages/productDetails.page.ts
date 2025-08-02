@@ -1,4 +1,5 @@
 import { Product, ProductCheckout } from '@data/products/productModel';
+import { Cart } from './common-components/cart';
 import { BasePage } from './base.page';
 import { Page, Locator } from '@playwright/test';
 
@@ -13,12 +14,12 @@ export class ProductDetailsPage extends BasePage {
     readonly addToCartButton: Locator;
     readonly buyNowButton: Locator;
     readonly toastMessageBody: Locator;
-    readonly cartButton: Locator;
-    readonly cartDrawer: Locator;
+    readonly cart: Cart;
     readonly toastCloseButton: Locator;
 
     constructor(page: Page) {
         super(page);
+        this.cart = new Cart(this.page);
         this.productCode = this.page.locator('//span[contains(text(), "Product Code")]/following-sibling::span');
         this.productBrand = this.page.locator('//span[contains(text(), "Brand")]/following-sibling::a');
         this.productAvailability = this.page.locator('//span[contains(text(), "Availability")]/following-sibling::span');
@@ -26,9 +27,7 @@ export class ProductDetailsPage extends BasePage {
         this.addToCartButton = this.page.getByRole('button', { name: "Add to Cart" });
         this.buyNowButton = this.page.getByRole('button', { name: "Buy Now" });
         this.toastMessageBody = this.page.locator('//*[@class="toast-body"]//p');
-        this.cartButton = this.page.locator('//*[@class="cart-icon"]').first();
-        this.cartDrawer = this.page.locator('#cart-total-drawer');
-        this.toastCloseButton = this.page.getByRole('button', { name: 'Close' })
+        this.toastCloseButton = this.page.getByRole('button', { name: 'Close' });
     }
 
     async waitForProductTitles(productName: string) {
@@ -60,23 +59,11 @@ export class ProductDetailsPage extends BasePage {
     }
 
     async openCart(): Promise<void> {
-        await this.cartButton.click();
-        await this.cartDrawer.waitFor({ state: "visible" })
+        await this.cart.openCart();
     }
 
-    // TODO: Move Cart functions into commmon-components
     async getAllItemsInCart(): Promise<CartItems> {
-        let allItems: CartItems = [];
-        const items = await this.page.locator('//*[@id="cart-total-drawer"]//table[@class="table"]//tr').all();
-        for (const item of items) {
-            let itemData: Partial<ProductCheckout> = {
-                name: await item.locator('td a').nth(1).textContent(),
-                productCode: (await item.locator('td small').textContent()).replace("Model: ", "").trim(),
-                quantity: parseInt((await item.locator('td.text-center').textContent()).toString().replace('x', ''))
-            }
-            allItems.push(itemData);
-        }
-        return allItems;
+        return await this.cart.getAllItemsInCart();
     }
 
     async closeToast(): Promise<void> {
