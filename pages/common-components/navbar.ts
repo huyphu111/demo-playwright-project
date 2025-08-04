@@ -1,19 +1,17 @@
+import { BasePage } from '@pages/base.page';
 import { Locator, Page } from '@playwright/test';
 
-export class Navbar {
-    // TODO: Refractor so that Navbar extends from BasePage
-    private readonly page: Page;
+export class Navbar extends BasePage {
     readonly searchInput: Locator;
     readonly searchButton: Locator;
     readonly categorySelect: Locator;
     readonly categoryList: Locator;
 
     constructor(page: Page) {
-        this.page = page;
+        super(page);
         this.searchInput = this.page.getByRole('textbox', { name: 'Search For Products' });
         this.searchButton = this.page.getByRole('button', { name: 'Search' });
         this.categorySelect = this.page.getByRole('button', { name: 'All Categories' });
-        // this.categoryList = this.page.locator('#input-category');
     }
 
     async searchProduct(productName: string, category: string | null) {
