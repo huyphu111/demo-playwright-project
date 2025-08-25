@@ -1,5 +1,6 @@
 import { Page, Locator } from '@playwright/test';
 import { BasePage } from './base.page';
+import { Account } from '@data/accountModel';
 
 export class LoginPage extends BasePage {
     readonly usernameInput: Locator;
@@ -31,10 +32,10 @@ export class LoginPage extends BasePage {
         await this.loginButton.click();
     }
 
-    async login(username: string, password: string) {
+    async login(account: Account) {
         await this.gotoLoginPage();
-        await this.fillUsername(username);
-        await this.fillPassword(password);
+        await this.fillUsername(account.username);
+        await this.fillPassword(account.password);
         await this.clickLoginButton();
     }
 

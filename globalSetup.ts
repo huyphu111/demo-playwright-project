@@ -6,7 +6,7 @@ async function globalSetup() {
     const page = await context.newPage();
 
     // Go to login page and perform login
-
+    
     // TODO: Add remove all cart items
 
     // Wait for navigation or some element that confirms login

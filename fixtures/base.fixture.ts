@@ -40,7 +40,7 @@ export const test = base.extend<BaseFixtures>({
     },
     loggedInPage: async ({ loginPage, myAccountPage }, use) => {
         const account = accounts.normalUser;
-        await loginPage.login(account.username, account.password);
+        await loginPage.login(account);
         await use(myAccountPage);
     },
     cartPage: async ({ page } , use) => {
