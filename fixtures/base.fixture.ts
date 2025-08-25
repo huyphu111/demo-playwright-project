@@ -5,6 +5,7 @@ import { MyAccountPage } from '@pages/myAccount';
 import { ProductSearchResultPage } from '@pages/productSearchResult';
 import { ProductDetailsPage } from '@pages/productDetails.page';
 import { accounts } from '@data/accountModel';
+import { CartPage } from '@pages/cart.page';
 
 type BaseFixtures = {
     loginPage: LoginPage;
@@ -13,6 +14,7 @@ type BaseFixtures = {
     productSearchResultPage: ProductSearchResultPage;
     productDetailsPage: ProductDetailsPage;
     loggedInPage: MyAccountPage;
+    cartPage: CartPage;
 }
 
 export const test = base.extend<BaseFixtures>({
@@ -40,7 +42,11 @@ export const test = base.extend<BaseFixtures>({
         const account = accounts.normalUser;
         await loginPage.login(account.username, account.password);
         await use(myAccountPage);
-    }
+    },
+    cartPage: async ({ page } , use) => {
+        const cartPage = new CartPage(page);
+        use(cartPage);
+    },
 });
 
 export { expect } from '@playwright/test';

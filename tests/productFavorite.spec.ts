@@ -1,13 +1,11 @@
 import { test, expect } from "@fixtures/base.fixture";
-import { Product, ipodTouchAvailable as pa, ipodTouchOutOfStock as poos } from "@data/products/productModel";
+import { ipodTouchAvailable as pa, ipodTouchOutOfStock as poos } from "@data/products/productModel";
 import { MESSAGES } from "@data/constants";
+import { chromium } from '@playwright/test';
+import { CartPage } from "@pages/cart.page";
+import { LoginPage } from "@pages/login";
 
 test.describe('Product Favorite Tests', () => {
-    // TODO: beforeAll, clear all items in cart
-    // test.beforeAll(async ({ loggedInPage, }) => {
-        
-    // })
-
     test("Verify that error message appears when user tries to add a product to favorites without logging in", async ({ homePage, productSearchResultPage }) => {
         await homePage.goto();
         await homePage.navBar.searchProduct(poos.name, null)
