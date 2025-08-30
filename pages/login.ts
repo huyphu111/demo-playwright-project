@@ -16,7 +16,7 @@ export class LoginPage extends BasePage {
         this.errorMessage = this.page.locator('div[class*="alert alert-danger"]');
     }
 
-    async gotoLoginPage() {
+    async goto() {
         await this.page.goto('/index.php?route=account/login');
     }
 
@@ -33,7 +33,6 @@ export class LoginPage extends BasePage {
     }
 
     async login(account: Account) {
-        await this.gotoLoginPage();
         await this.fillUsername(account.username);
         await this.fillPassword(account.password);
         await this.clickLoginButton();

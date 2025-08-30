@@ -16,22 +16,22 @@ test.describe('Product Favorite Tests', () => {
         await expect(productSearchResultPage.mustLoginNotificationMessage).toBeVisible();
     });
 
-    test("Verify that add to cart and buy now button is unavailable for out-of-stock product", async ({ loggedInPage, productDetailsPage }) => {
-        await loggedInPage.navigateToProductDetailsViaURL(poos.id.toString());
+    test("Verify that add to cart and buy now button is unavailable for out-of-stock product", async ({ productDetailsPage }) => {
+        await productDetailsPage.navigateToProductDetailsViaURL(poos.id.toString());
         await productDetailsPage.waitForProductTitles(poos.name);
         await expect(productDetailsPage.addToCartButton).not.toBeVisible();
         await expect(productDetailsPage.buyNowButton).not.toBeVisible();
     });
 
-    test("Verify that add to cart and buy now button is available for in-stock product", async ({ loggedInPage, productDetailsPage }) => {
-        await loggedInPage.navigateToProductDetailsViaURL(pa.id.toString());
+    test("Verify that add to cart and buy now button is available for in-stock product", async ({ productDetailsPage }) => {
+        await productDetailsPage.navigateToProductDetailsViaURL(pa.id.toString());
         await productDetailsPage.waitForProductTitles(pa.name);
         await expect(productDetailsPage.addToCartButton).toBeVisible();
         await expect(productDetailsPage.buyNowButton).toBeVisible();
     });
 
-    test("Verify that user can add to cart a product", async ({ loggedInPage, productDetailsPage }) => {
-        await loggedInPage.navigateToProductDetailsViaURL(pa.id.toString());
+    test("Verify that user can add to cart a product", async ({ productDetailsPage }) => {
+        await productDetailsPage.navigateToProductDetailsViaURL(pa.id.toString());
         await productDetailsPage.waitForProductTitles(pa.name);
         await productDetailsPage.addToCart();
         let toastMessage = await productDetailsPage.getToastMessage();

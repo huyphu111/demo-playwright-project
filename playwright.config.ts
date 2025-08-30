@@ -1,13 +1,11 @@
 import { defineConfig, devices } from '@playwright/test';
-import * as dotenv from 'dotenv';
+import dotenv from 'dotenv';
 import path from 'path';
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// import dotenv from 'dotenv';
-// import path from 'path';
 dotenv.config({ path: path.resolve(__dirname, '.env'), override: true });
 
 /**
@@ -30,11 +28,12 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
-    baseURL: process.env.BASE_URL,
+    baseURL: process.env.BASE_URL || "https://ecommerce-playground.lambdatest.io",
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     headless: process.env.HEADLESS ? true : false // Use headless mode based on environment variable
   },
+  globalSetup: require.resolve('./globalSetup'), 
 
   /* Configure projects for major browsers */
   projects: [
@@ -49,7 +48,7 @@ export default defineConfig({
     //   use: { ...devices['Pixel 5'] },
     // },
     // {
-    //   name: 'Mobile Safari',
+    //   name: 'Mobile Safari',`
     //   use: { ...devices['iPhone 12'] },
     // },
 
