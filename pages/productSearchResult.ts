@@ -4,7 +4,7 @@ import { BasePage } from './base.page';
 export class ProductSearchResultPage extends BasePage {
     readonly searchInput: Locator;
     readonly searchButton: Locator;
-    readonly categorySelect: Locator;   
+    readonly categorySelect: Locator;
     readonly categoryList: Locator;
     readonly productList: Locator;
     readonly productSearchBody: Locator;
@@ -25,11 +25,11 @@ export class ProductSearchResultPage extends BasePage {
         await this.productSearchBody.waitFor({ state: 'visible' });
     }
 
-    async getAllDisplayedProducts() {
+    async getAllDisplayedProducts(): Promise<Locator[]> {
         return await this.productList.all();
     }
 
-    async getAllDisplayedProductsNames() {
+    async getAllDisplayedProductsNames(): Promise<string[]> {
         const products = await this.getAllDisplayedProducts();
         const productNames = await Promise.all(products.map(async (product) => {
             const nameElement = await product.locator('h4[class="title"]').first();
