@@ -8,8 +8,6 @@ export interface Account {
     updatedAt?: string;
 }
 
-export type Accounts = Account[];
-
 export const normalUser: Account = {
     username: "huyphu111@gmail.com",
     email: "huyphu111@gmail.com",
@@ -21,7 +19,7 @@ export const invalidUser: Account = {
     password: "password"
 };
 
-export const accounts = {
+export const accounts : { [key: string]: Account } = {
     normalUser,
     invalidUser
 };

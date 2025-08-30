@@ -1,9 +1,6 @@
 import { test, expect } from "@fixtures/base.fixture";
 import { ipodTouchAvailable as pa, ipodTouchOutOfStock as poos } from "@data/products/productModel";
 import { MESSAGES } from "@data/constants";
-import { chromium } from '@playwright/test';
-import { CartPage } from "@pages/cart.page";
-import { LoginPage } from "@pages/login";
 
 test.describe('Product Favorite Tests', () => {
     test("Verify that error message appears when user tries to add a product to favorites without logging in", async ({ homePage, productSearchResultPage }) => {

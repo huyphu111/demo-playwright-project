@@ -1,4 +1,4 @@
-import { Product, ProductCheckout } from '@data/products/productModel';
+import { ProductCheckout } from '@data/products/productModel';
 import { Cart } from './common-components/cart';
 import { BasePage } from './base.page';
 import { Page, Locator } from '@playwright/test';
