@@ -6,6 +6,7 @@ import { ProductSearchResultPage } from '@pages/productSearchResult';
 import { ProductDetailsPage } from '@pages/productDetails.page';
 import { accounts } from '@data/account.model';
 import { CartPage } from '@pages/cart.page';
+import { ArticlePage } from '@pages/article.page';
 
 type BaseFixtures = {
     loginPage: LoginPage;
@@ -15,6 +16,7 @@ type BaseFixtures = {
     productDetailsPage: ProductDetailsPage;
     loggedInPage: MyAccountPage;
     cartPage: CartPage;
+    articlePage: ArticlePage;
 }
 
 export const test = base.extend<BaseFixtures>({
@@ -46,6 +48,10 @@ export const test = base.extend<BaseFixtures>({
     cartPage: async ({ page } , use) => {
         const cartPage = new CartPage(page);
         use(cartPage);
+    },
+    articlePage: async ({ page } , use) => {
+        const articlePage = new ArticlePage(page);
+        use(articlePage);
     },
 });
 

@@ -10,4 +10,8 @@ export class BasePage {
     async navigateToProductDetailsViaURL(productId: string) {
         await this.page.goto(`/index.php?route=product/product&product_id=${productId}`);
     }
+
+    async navigateToArticleViaURL(articleId: number) {
+        await this.page.goto(`/index.php?route=extension/maza/blog/article&article_id=${articleId.toString()}`)
+    }
 }
