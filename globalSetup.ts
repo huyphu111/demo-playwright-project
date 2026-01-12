@@ -1,6 +1,6 @@
 import { LoginPage } from '@pages/login';
 import { chromium } from '@playwright/test';
-import { normalUser } from '@data/accountModel';
+import { normalUser } from '@data/account.model';
 import { CartPage } from '@pages/cart.page';
 
 const baseURL = process.env.BASE_URL || "https://ecommerce-playground.lambdatest.io";

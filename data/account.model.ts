@@ -1,3 +1,5 @@
+
+
 export interface Account {
     username: string;
     email?: string;
@@ -18,8 +20,11 @@ export const invalidUser: Account = {
     username: "user",
     password: "password"
 };
-
+   
 export const accounts : { [key: string]: Account } = {
     normalUser,
     invalidUser
 };
+
+// Use environment variables for username, email and password
+// What is the CI/CD friendly way? How to apply into CI/CD?

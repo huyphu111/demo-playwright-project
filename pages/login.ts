@@ -1,6 +1,6 @@
 import { Page, Locator } from '@playwright/test';
 import { BasePage } from './base.page';
-import { Account } from '@data/accountModel';
+import { Account } from '@data/account.model';
 
 export class LoginPage extends BasePage {
     readonly usernameInput: Locator;

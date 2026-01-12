@@ -1,5 +1,5 @@
 import { test, expect } from '@fixtures/base.fixture';
-import { Account, accounts } from '@data/accountModel';
+import { Account, accounts } from '@data/account.model';
 import { MESSAGES } from '@data/constants';
 
 let validAccount: Account = accounts.normalUser;

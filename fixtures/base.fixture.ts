@@ -4,7 +4,7 @@ import { HomePage } from '@pages/home';
 import { MyAccountPage } from '@pages/myAccount';
 import { ProductSearchResultPage } from '@pages/productSearchResult';
 import { ProductDetailsPage } from '@pages/productDetails.page';
-import { accounts } from '@data/accountModel';
+import { accounts } from '@data/account.model';
 import { CartPage } from '@pages/cart.page';
 
 type BaseFixtures = {
