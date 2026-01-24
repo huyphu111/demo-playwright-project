@@ -1,5 +1,5 @@
 import { test, expect } from '@fixtures/base.fixture';
-import { macbookPro } from '@data/products/productModel';
+import { macbookPro } from '@data/products/product.data';
 
 test('Verify that user can search product by Product Name successfully from Home Page', async ({ homePage, productSearchResultPage }) => {
     await homePage.goto();

@@ -11,6 +11,7 @@
         "@fixtures/*": ["./fixtures/*"],
         "@models/*": ["./models/*"],
         "@tests/*": ["./tests/*"],
+        "@data/*": ["./data/*"],
         "@common-components/*": ["./pages/common-components/*"],
     }
   },

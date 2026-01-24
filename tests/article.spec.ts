@@ -1,9 +1,9 @@
 import { test, expect } from '@fixtures/base.fixture';
-import { sampleArticleFashion } from '@data/article.model';
-import { SAMPLE_COMMENT } from '@data/comment.model';
+import { SAMPLE_ARTICLE_FASHION } from '@data/article.data';
+import { SAMPLE_COMMENT } from '@data/comment.data';
 
 test('Verify article title, author, and published date', async ({ articlePage }) => {
-    const ARTICLE_DATA = sampleArticleFashion;
+    const ARTICLE_DATA = SAMPLE_ARTICLE_FASHION;
 
     await articlePage.navigateToArticleViaURL(ARTICLE_DATA.id);
     await expect(articlePage.title).toBeVisible();
@@ -15,7 +15,7 @@ test('Verify article title, author, and published date', async ({ articlePage })
 })
 
 test("Verify user can add comment into an article", async ({ articlePage }) => {
-    const ARTICLE_DATA = sampleArticleFashion;
+    const ARTICLE_DATA = SAMPLE_ARTICLE_FASHION;
     const COMMENT_DATA = SAMPLE_COMMENT;
 
     await articlePage.navigateToArticleViaURL(ARTICLE_DATA.id);

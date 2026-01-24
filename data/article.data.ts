@@ -1,11 +1,6 @@
-export interface Article {
-    id: number,
-    title?: string,
-    author?: string,
-    date?: Date,
-}
+import { Article } from "@models/article.model"
 
-export const sampleArticleFashion : Article = {
+export const SAMPLE_ARTICLE_FASHION : Article = {
     id: 11,
     title: "amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus",
     author: "Mark Jecno",

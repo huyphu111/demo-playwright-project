@@ -1,5 +1,5 @@
 import { test, expect } from '@fixtures/base.fixture';
-import { ipodTouchAvailable, ipodTouchOutOfStock } from '@data/products/productModel';
+import { ipodTouchAvailable, ipodTouchOutOfStock } from '@data/products/product.data';
 import { getAvailabilityLabel } from 'helpers/productHelpers';
 
 test.describe('Product Details Page Tests', () => {

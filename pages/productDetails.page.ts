@@ -1,6 +1,6 @@
-import { ProductCheckout } from '@data/products/productModel';
-import { Cart } from './common-components/cart';
-import { BasePage } from './base.page';
+import { ProductCheckout } from '@models/products/product.model';
+import { Cart } from '@pages/common-components/cart';
+import { BasePage } from '@pages/base.page';
 import { Page, Locator } from '@playwright/test';
 
 export type CartItems = Array<Partial<ProductCheckout>>;

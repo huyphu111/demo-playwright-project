@@ -1,14 +1,4 @@
-
-
-export interface Account {
-    username: string;
-    email?: string;
-    password: string;
-    role?: string;
-    isActive?: boolean;
-    createdAt?: string;
-    updatedAt?: string;
-}
+import { Account } from "@models/account.model";
 
 export const normalUser: Account = {
     username: "huyphu111@gmail.com",
@@ -25,6 +15,3 @@ export const accounts : { [key: string]: Account } = {
     normalUser,
     invalidUser
 };
-
-// Use environment variables for username, email and password
-// What is the CI/CD friendly way? How to apply into CI/CD?

@@ -1,5 +1,5 @@
 import { BasePage } from "@pages/base.page";
-import { ProductCheckout } from '@data/products/productModel';
+import { ProductCheckout } from '@models/products/product.model';
 import { Page, Locator } from '@playwright/test';
 
 export type CartItems = Array<Partial<ProductCheckout>>;

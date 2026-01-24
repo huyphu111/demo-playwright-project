@@ -4,7 +4,7 @@ import { HomePage } from '@pages/home';
 import { MyAccountPage } from '@pages/myAccount';
 import { ProductSearchResultPage } from '@pages/productSearchResult';
 import { ProductDetailsPage } from '@pages/productDetails.page';
-import { accounts } from '@data/account.model';
+import { accounts } from '@data/account.data';
 import { CartPage } from '@pages/cart.page';
 import { ArticlePage } from '@pages/article.page';
 

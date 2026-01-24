@@ -5,7 +5,6 @@ export interface IComment {
     dateComment?: Date;
 }
 
-
 export class CommentModel implements IComment {
     readonly name: string;
     readonly email: string;
@@ -19,9 +18,3 @@ export class CommentModel implements IComment {
         this.dateComment = data.dateComment;
     }
 }
-
-export const SAMPLE_COMMENT: CommentModel = new CommentModel({ 
-    name: 'John',
-    email: 'john@example.com', 
-    content: 'This is a sample comment that is used for the purpose of testing.' 
-})

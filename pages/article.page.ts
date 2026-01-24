@@ -1,7 +1,7 @@
 import { Page, Locator } from "@playwright/test";
 import { BasePage } from "./base.page";
 import { parseCustomDate } from "helpers/date.helper";
-import { IComment } from "@data/comment.model";
+import { IComment } from "@models/comment.model";
 
 export class ArticlePage extends BasePage {
     readonly title: Locator;
