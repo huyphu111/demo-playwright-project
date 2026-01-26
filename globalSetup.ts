@@ -20,7 +20,7 @@ async function globalSetup() {
     await cartPage.removeAllProducts();
 
     // Save storage state to file
-    await context.storageState({ path: 'storageState.json' });
+    await context.storageState({ path: process.env.STORAGE_STATE_PATH || 'storageState.json' });
 
     await browser.close();
 }

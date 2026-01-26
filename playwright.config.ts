@@ -33,7 +33,7 @@ export default defineConfig({
     trace: 'on-first-retry',
     headless: process.env.HEADLESS ? true : false // Use headless mode based on environment variable
   },
-  globalSetup: require.resolve('./globalSetup'), 
+  globalSetup: require.resolve('./globalSetup'),
 
   /* Configure projects for major browsers */
   projects: [

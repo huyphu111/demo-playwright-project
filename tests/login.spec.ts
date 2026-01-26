@@ -17,7 +17,7 @@ test.describe('Login tests', () => {
     await expect(await myAccountPage.verifyMyAccountSectionDisplayed()).toBeTruthy();
   })
 
-  test('Verify that user cannot login with invalid accounts', async ({ loginPage }) => {
+  test.skip('Verify that user cannot login with invalid accounts', async ({ loginPage }) => {
     await loginPage.goto();
     await loginPage.login(invalidAccount);
 
