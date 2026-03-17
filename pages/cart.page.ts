@@ -8,7 +8,7 @@ export class CartPage extends BasePage {
 
     constructor(page: Page) {
         super(page);
-        this.productDeleteBtn = this.page.locator("//button[@class='btn btn-danger']");
+        this.productDeleteBtn = this.page.locator('button.btn.btn-danger');
         this.emptyMessageP = this.page.locator('#content').getByText('Your shopping cart is empty!')
     }
 

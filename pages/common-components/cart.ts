@@ -10,7 +10,7 @@ export class Cart extends BasePage {
 
     constructor(page: Page) {
         super(page);
-        this.cartButton = this.page.locator('//*[@class="cart-icon"]').first();
+        this.cartButton = this.page.locator('.cart-icon').first();
         this.cartDrawer = this.page.locator('#cart-total-drawer');
     }
 

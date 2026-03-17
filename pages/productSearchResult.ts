@@ -32,16 +32,16 @@ export class ProductSearchResultPage extends BasePage {
     async getAllDisplayedProductsNames(): Promise<string[]> {
         const products = await this.getAllDisplayedProducts();
         const productNames = await Promise.all(products.map(async (product) => {
-            const nameElement = await product.locator('h4[class="title"]').first();
+            const nameElement = await product.locator('h4.title').first();
             return await nameElement.textContent();
         }));
         return productNames.filter(name => name !== null) as string[];
     }
 
     async addProductToFavorites(productId: string) {
-        await this.page.locator(`//a[contains(@id, "mz-product-grid-image-${productId}")]`).hover();
+        await this.page.locator(`a[id*="mz-product-grid-image-${productId}"]`).hover();
         await this.page.waitForTimeout(1000);
-        await this.page.locator(`//div[@class="product-action"]/button[contains(@class, "wishlist-${productId}")]`).click();
+        await this.page.locator(`.product-action button[class*="wishlist-${productId}"]`).click();
     }
 
     async waitForMustLoginNotification() {

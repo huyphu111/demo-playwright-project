@@ -15,13 +15,13 @@ export class ArticlePage extends BasePage {
 
     constructor(page: Page) {
         super(page);
-        this.title = this.page.locator("//h1[@class='h1']");
-        this.extrasInfo = this.page.locator("//span[contains(@class,'extra-author')]");
-        this.commentName = this.page.locator("//input[@name='name']");
-        this.commentEmail = this.page.locator("//input[@name='email']");
+        this.title = this.page.locator("h1.h1");
+        this.extrasInfo = this.page.locator("span[class*='extra-author']");
+        this.commentName = this.page.locator("input[name='name']");
+        this.commentEmail = this.page.locator("input[name='email']");
         this.commentContent = this.page.locator("#input-comment");
-        this.author = this.page.locator("//a[@class='author']");
-        this.commentSuccessMessage = this.page.locator("//div[contains(@class, 'alert-success')]");
+        this.author = this.page.locator("a.author");
+        this.commentSuccessMessage = this.page.locator("div[class*='alert-success']");
         this.commentSubmitBtn = this.page.locator("#button-comment");
     }
 
